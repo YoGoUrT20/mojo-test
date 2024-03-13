@@ -1,0 +1,23 @@
+import time
+
+fn pi_term(k: Int) -> Float64:
+    var a = (1/(16^k)) * ((4/(8*k + 1)) - (2/(8*k + 4)) - (1/(8*k + 5)) - (1/(8*k + 6)))
+    return a
+
+
+fn bbp_pi_digit(n: Int) -> String:
+    var l = Float64(pi_term(n) * 16)
+    var x = hex(l)
+    print(l, x)
+    return x
+
+fn main() raises:
+    print('Starting')
+    var n = 3
+    # print('pi', estimate_pi(1000000))
+    var start_time = time.now()
+    var bbp_pi_digit = bbp_pi_digit(n)
+    var end_time = time.now()
+    var time_taken = (end_time-start_time)
+    print(bbp_pi_digit)
+    print('time_taken (NNseconds): ', time_taken)

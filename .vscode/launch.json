@@ -2,21 +2,21 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Build and Run C++", // Name of your task
+            "label": "Build and Run C++",
             "type": "shell",
-            "command": "g++",  // Assuming you have g++ compiler installed
+            "command": "g++",
             "args": [
-                "-g", 
-                "your_cpp_file.cpp",  // Replace with your actual filename
-                "-o", 
-                "your_program"        // Replace with the desired output file name
+                "-g",
+                "your_cpp_file.cpp",
+                "-o",
+                "your_program"
             ],
             "group": {
                 "kind": "build",
-                "isDefault": true // Makes this the default build task
+                "isDefault": true
             },
             "presentation": {
-                "reveal": "always"  // Ensures terminal is shown when running the task
+                "reveal": "always"
             },
             "problemMatcher": "$gcc"
         }
@@ -47,26 +47,37 @@
                 }
             ]
         },
-
-    {
-        "name": "(gdb) Attach",
-        "type": "cppdbg",
-        "request": "attach",
-        "program": "enter program name, for example ${workspaceFolder}/a.exe",
-        "MIMode": "gdb",
-        "miDebuggerPath": "/path/to/gdb",
-        "setupCommands": [
-            {
-                "description": "Enable pretty-printing for gdb",
-                "text": "-enable-pretty-printing",
-                "ignoreFailures": true
-            },
-            {
-                "description": "Set Disassembly Flavor to Intel",
-                "text": "-gdb-set disassembly-flavor intel",
-                "ignoreFailures": true
-            }
-        ]
-    }
+        {
+            "name": "(gdb) Attach",
+            "type": "cppdbg",
+            "request": "attach",
+            "program": "enter program name, for example ${workspaceFolder}/a.exe",
+            "MIMode": "gdb",
+            "miDebuggerPath": "/path/to/gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "C/C++: cl.exe build and debug active file",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "console": "integratedTerminal",
+            "preLaunchTask": "C/C++: cl.exe build active file"
+        }
     ]
 }

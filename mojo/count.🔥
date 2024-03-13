@@ -1,0 +1,21 @@
+import time
+fn main() raises:
+
+    var start_time = time.now()
+
+    var counter = 0
+
+    for i in range(1, 1000000000000000001):
+        var counter = counter + 1
+
+    var end_time = time.now()
+    var elapsed_time = end_time - start_time
+    var execution_time_nanoseconds = end_time - start_time
+    var execution_time_seconds = execution_time_nanoseconds / 1000000000
+
+    print("Execution time seconds")
+    print(execution_time_seconds)
+    print("Execution time: nanoseconds")
+    print( execution_time_nanoseconds)
+
+
